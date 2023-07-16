@@ -13,6 +13,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Set up Docker
+        run: |
+          sudo apt-get update
+          sudo apt-get -y remove moby-containerd containerd moby-runc runc
+          sudo apt-get -y install docker.io
+          sudo systemctl start docker
+          sudo systemctl enable docker
+
       - name: Log in to Docker Hub
         run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
 
