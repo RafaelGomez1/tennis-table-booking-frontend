@@ -19,7 +19,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: ..
           file: Dockerfile
           push: true
           tags: rafagomezp/tt-sant-andreu-reservation:${{ github.sha }}
@@ -34,9 +34,9 @@ jobs:
       - name: Deploy to DigitalOcean Droplet
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.DROPLET_IP }}
-          username: ${{ secrets.DROPLET_USERNAME }}
-          key: ${{ secrets.DROPLET_PRIVATE_KEY }}
+          host: ${{ secrets.DIGITALOCEAN_DROPLET_IP }}
+          username: ${{ secrets.DIGITALOCEAN_DROPLET_USERNAME }}
+          password: ${{ secrets.DIGITALOCEAN_DROPLET_PASSWORD }}
           script: |
             docker pull rafagomezp/tt-sant-andreu-reservation:${{ github.sha }}
             docker stop my-angular-app || true
