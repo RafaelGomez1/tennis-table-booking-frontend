@@ -13,14 +13,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Docker Buildx
+      - name: Set up Docker Build
         uses: docker/setup-buildx-action@v1
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
           context: ..
-          file: Dockerfile
+          file: ./Dockerfile
           push: true
           tags: rafagomezp/tt-sant-andreu-reservation:${{ github.sha }}
 
