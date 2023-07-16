@@ -29,11 +29,10 @@ jobs:
       - name: Verify project contents
         run: |
           ls -la
-          ls -la /github/worksflows
 
       - name: Build and push Docker image
         run: |
-          docker build -t rafagomezp/tt-sant-andreu-reservation:${{ github.sha }} .
+          docker build -t rafagomezp/tt-sant-andreu-reservation:${{ github.sha }}  -f Dockerfile .
           docker push rafagomezp/tt-sant-andreu-reservation:${{ github.sha }}
 
   deploy_to_digital_ocean:
