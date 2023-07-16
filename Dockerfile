@@ -1,21 +1,29 @@
-# Stage 1: Build the Angular app
-FROM node:14 as build-stage
+FROM --platform=$BUILDPLATFORM node:17.0.1-bullseye-slim as builder
 
-WORKDIR /app
+RUN mkdir /project
+WORKDIR /project
 
-COPY package*.json ./
+RUN npm install -g @angular/cli@16
 
-RUN npm install
+COPY package.json package-lock.json ./
+RUN npm ci
 
 COPY . .
+CMD ["ng", "serve", "--host", "0.0.0.0"]
 
-RUN npm run build
+FROM builder as dev-envs
 
-# Stage 2: Serve the Angular app
-FROM nginx:latest as production-stage
+RUN <<EOF
+apt-get update
+apt-get install -y --no-install-recommends git
+EOF
 
-COPY --from=build-stage /app/dist /usr/share/nginx/html
+RUN <<EOF
+useradd -s /bin/bash -m vscode
+groupadd docker
+usermod -aG docker vscode
+EOF
+# install Docker tools (cli, buildx, compose)
+COPY --from=gloursdocker/docker / /
 
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["ng", "serve", "--host", "0.0.0.0"]
