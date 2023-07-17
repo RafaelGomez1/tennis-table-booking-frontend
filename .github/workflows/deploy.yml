@@ -32,7 +32,7 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          cd /tennis-table-booking-reservation
+          cd tennis-table-booking-reservation
           docker build -t rafagomezp/tt-sant-andreu-reservation:${{ github.sha }}  -f Dockerfile .
           docker push rafagomezp/tt-sant-andreu-reservation:${{ github.sha }}
 
