@@ -32,7 +32,7 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t rafagomezp/tt-sant-andreu-reservation:${{ github.sha }}  -f /tennis-table-booking-reservation/Dockerfile .
+          docker build -t rafagomezp/tt-sant-andreu-reservation:${{ github.sha }}  -f tennis-table-booking-reservation/Dockerfile .
           docker push rafagomezp/tt-sant-andreu-reservation:${{ github.sha }}
 
   deploy_to_digital_ocean:
