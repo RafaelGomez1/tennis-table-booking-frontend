@@ -53,4 +53,4 @@ jobs:
             docker pull rafagomezp/tt-sant-andreu-reservation:${{ github.sha }}
             docker stop my-angular-app || true
             docker rm my-angular-app || true
-            docker run -d --name my-angular-app -p 80:80 rafagomezp/tt-sant-andreu-reservation:${{ github.sha }}
+            docker run -d --name tt-sant-andreu-reservation -p 80:80 rafagomezp/tt-sant-andreu-reservation:${{ github.sha }}
