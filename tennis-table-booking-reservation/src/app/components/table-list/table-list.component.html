@@ -1,1 +1,9 @@
-<p>table-list works!</p>
+<!-- table-list.component.html -->
+<div class="table-list-container">
+  <!-- Loop through each agenda and create a card for it -->
+  <div *ngFor="let agenda of agendas">
+    <mat-card class="table-card">
+      <app-table [agenda]="agenda"></app-table>
+    </mat-card>
+  </div>
+</div>

@@ -21,23 +21,17 @@ export class AppComponent implements OnInit, OnDestroy {
 
   openAuthDialog(): void {
     this.dialog.open(AuthDialogComponent, {
-      width: '300px', // Adjust the width as needed
+      width: '350px',
     });
   }
 
   ngOnInit() {
     // TODO -> Get current week and year
 
+
     this.subscription = this.agendaService.getWeekAgenda(28, 2023).subscribe( res => {
       res.forEach( value => console.log(value))
       this.agendas = res
-    })
-  }
-
-  getCurrentWeekAgendas() {
-    return this.agendaService.getWeekAgenda(28, 2023).subscribe( res => {
-      res.forEach( value => console.log(value))
-      return res
     })
   }
 

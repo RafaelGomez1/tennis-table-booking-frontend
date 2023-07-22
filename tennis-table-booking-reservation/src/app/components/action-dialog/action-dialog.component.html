@@ -1,1 +1,17 @@
-<p>action-dialog works!</p>
+<h2>{{ agendaDateFormatted }}</h2>
+<mat-form-field align="center">
+  <mat-label>Reservar / Cancelar Reserva</mat-label>
+  <mat-select [(ngModel)]="reservationType">
+    <mat-option value="reservar">Reservar</mat-option>
+    <mat-option value="cancelar">Cancelar Reserva</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field align="center">
+  <mat-label>Nombre</mat-label>
+  <input matInput [(ngModel)]="name" />
+</mat-form-field>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close (click)="onCancel()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()">Reservar</button>
+</mat-dialog-actions>
+

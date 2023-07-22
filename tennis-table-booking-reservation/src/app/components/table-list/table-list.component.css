@@ -1,0 +1,20 @@
+/* table-list.component.css */
+
+.table-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Adjust the value to set the desired separation between cards */
+  justify-content: center; /* Center the cards horizontally */
+  align-items: center; /* Center the cards vertically */
+}
+
+.mat-card {
+  flex: 1;
+  max-width: calc(80% - 10px); /* Adjust the value to control the width of each card */
+  /* Add other styles as needed */
+
+  /* Add separator styles */
+  border: 1px solid #ccc; /* Example border style; you can customize the color and thickness */
+  border-radius: 8px; /* Add rounded corners for a nicer appearance */
+  padding: 10px; /* Add some padding to the cards */
+}
