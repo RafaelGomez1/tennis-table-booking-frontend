@@ -29,8 +29,15 @@ export class AppComponent implements OnInit, OnDestroy {
     // TODO -> Get current week and year
 
     this.subscription = this.agendaService.getWeekAgenda(28, 2023).subscribe( res => {
-      console.log(res)
+      res.forEach( value => console.log(value))
       this.agendas = res
+    })
+  }
+
+  getCurrentWeekAgendas() {
+    return this.agendaService.getWeekAgenda(28, 2023).subscribe( res => {
+      res.forEach( value => console.log(value))
+      return res
     })
   }
 

@@ -29,7 +29,7 @@ export class AvailableHour {
   to:                 number;
   type:               string;
   registeredPlayers:  RegisteredPlayer[];
-  capacity: number;
+  capacity: Capacity;
 
   constructor(
     id: string,
@@ -37,7 +37,7 @@ export class AvailableHour {
     to: number,
     type: string,
     registeredPlayers:  RegisteredPlayer[],
-    capacity: number
+    capacity: Capacity
   ) {
     this.id = id;
     this.from = from;
@@ -53,6 +53,14 @@ export class RegisteredPlayer {
 
   constructor(name: string) {
     this.name = name;
+  }
+}
+
+export class Capacity {
+  value: string;
+
+  constructor(value: string) {
+    this.value = value;
   }
 }
 

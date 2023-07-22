@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {AuthenticationService} from "../../services/authentication.service";
 import {MatDialogRef} from "@angular/material/dialog";
 import {UserLogin} from "../../models/login/UserLogin";
-import {AgendaService} from "../../services/agenda.service";
+import {GlobalAuthService} from "../../services/global.auth.service";
 
 @Component({
   selector: 'app-auth-dialog',
@@ -13,7 +13,7 @@ export class AuthDialogComponent {
   constructor(
     private dialogRef: MatDialogRef<AuthDialogComponent>,
     private authService: AuthenticationService,
-    private agendaService: AgendaService
+    private globalAuthService: GlobalAuthService
   ) {}
 
   username = ''
@@ -22,18 +22,12 @@ export class AuthDialogComponent {
   onConfirm() {
     // Basic Authorization credentials
     const credentials = btoa(`${this.username}:${this.password}`);
-
     const login = new UserLogin(this.username, this.password)
+
     this.authService.signIn(login, credentials).subscribe(
       response => {
-        console.log(response.accessKey);
+        this.globalAuthService.storeAccessKey(response.accessKey)
         this.dialogRef.close()
-    })
-
-
-    this.agendaService.getWeekAgenda(28, 2023).subscribe( response => {
-      console.log(response);
-      this.dialogRef.close();
     })
   }
 

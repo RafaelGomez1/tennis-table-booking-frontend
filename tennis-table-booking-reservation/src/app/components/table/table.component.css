@@ -4,3 +4,9 @@
   align-items: center;
   height: 100%;
 }
+
+td, th {
+  padding: 8px;
+  text-align: center;
+}
+
