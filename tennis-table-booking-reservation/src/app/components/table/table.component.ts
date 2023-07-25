@@ -15,7 +15,7 @@ export class TableComponent {
   @Input('agenda') agenda: Agenda;
 
   getColumnsToDisplay(): string[] {
-    return ['hours', 'players', 'status', 'actions']; // Always include the players column
+    return ['hours', 'players', 'status', 'actions'];
   }
 
   getCurrentDateFormatted(): string {
@@ -28,6 +28,8 @@ export class TableComponent {
 
   performAction(hour: AvailableHour) {
     const dialogRef = this.dialog.open(ActionDialogComponent, {
+
+      width : '350px',
       data: {
         agendaDateFormatted: this.getCurrentDateFormatted(),
         agenda: this.agenda,
@@ -35,11 +37,9 @@ export class TableComponent {
       },
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      // Perform any actions based on the result from the dialog if needed
-      if (result) {
-        console.log('Reservation data:', result);
-        // Perform your reservation/cancellation logic here with the data from the dialog
+    dialogRef.afterClosed().subscribe((agenda) => {
+      if (agenda) {
+        this.agenda = agenda
       }
     });
   }
@@ -47,11 +47,6 @@ export class TableComponent {
   // Method to check if the hour is available (fewer players than capacity)
   isAvailable(hour: AvailableHour): boolean {
     return hour.registeredPlayers.length < +hour.capacity.value;
-  }
-
-  // Method to check if the hour is full (same number of players as capacity)
-  isFull(hour: AvailableHour): boolean {
-    return hour.registeredPlayers.length === +hour.capacity.value;
   }
 
 }

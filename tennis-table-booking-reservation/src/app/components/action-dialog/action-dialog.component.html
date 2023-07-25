@@ -1,12 +1,12 @@
 <h2>{{ agendaDateFormatted }}</h2>
-<mat-form-field align="center">
+<mat-form-field appearance="fill">
   <mat-label>Reservar / Cancelar Reserva</mat-label>
   <mat-select [(ngModel)]="reservationType">
-    <mat-option value="reservar">Reservar</mat-option>
-    <mat-option value="cancelar">Cancelar Reserva</mat-option>
+    <mat-option value="RESERVAR">RESERVAR</mat-option>
+    <mat-option value="CANCELAR_RESERVA">CANCELAR RESERVA</mat-option>
   </mat-select>
 </mat-form-field>
-<mat-form-field align="center">
+<mat-form-field appearance="fill">
   <mat-label>Nombre</mat-label>
   <input matInput [(ngModel)]="name" />
 </mat-form-field>

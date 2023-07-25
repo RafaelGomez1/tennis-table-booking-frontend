@@ -15,4 +15,8 @@
   position: absolute;
   top: 20px;
   right: 20px;
+  height: fit-content;
+  width: fit-content;
+  transform: scale(1.5); /* Increase the size by 50% */
 }
+

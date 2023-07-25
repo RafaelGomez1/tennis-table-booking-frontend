@@ -26,16 +26,30 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // TODO -> Get current week and year
-
+    const x = this.getCurrentWeekAndYear()
+    console.log(`This is week ${x.week} of year ${x.year}`)
 
     this.subscription = this.agendaService.getWeekAgenda(28, 2023).subscribe( res => {
-      res.forEach( value => console.log(value))
-      this.agendas = res
+      let agendas = res.filter((agenda) => agenda.availableHours && agenda.availableHours.length > 0);
+      agendas.forEach( value => console.log(value))
+      this.agendas = agendas
     })
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe()
+  }
+
+  private getCurrentWeekAndYear(): { week: number; year: number } {
+    const now = new Date();
+    const onejan = new Date(now.getFullYear(), 0, 1);
+
+    // Calculate the week number
+    const weekNumber = Math.ceil(((now.getTime() - onejan.getTime()) / 86400000 + onejan.getDay() + 1) / 7);
+
+    // Get the current year
+    const year = now.getFullYear();
+
+    return { week: weekNumber, year: year };
   }
 }

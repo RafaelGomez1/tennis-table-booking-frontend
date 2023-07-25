@@ -21,6 +21,8 @@ import { MatSortModule } from '@angular/material/sort';
 import {MatCardModule} from "@angular/material/card";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatSelectModule} from "@angular/material/select";
+import {MatIconModule} from "@angular/material/icon";
+import {MatBadgeModule} from "@angular/material/badge";
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import {MatSelectModule} from "@angular/material/select";
     MatSortModule,
     MatCardModule,
     MatChipsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
