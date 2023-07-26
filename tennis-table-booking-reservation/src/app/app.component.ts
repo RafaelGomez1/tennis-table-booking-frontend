@@ -29,7 +29,7 @@ export class AppComponent implements OnInit, OnDestroy {
     const x = this.getCurrentWeekAndYear()
     console.log(`This is week ${x.week} of year ${x.year}`)
 
-    this.subscription = this.agendaService.getWeekAgenda(28, 2023).subscribe( res => {
+    this.subscription = this.agendaService.getWeekAgenda(x.week, x.year).subscribe( res => {
       let agendas = res.filter((agenda) => agenda.availableHours && agenda.availableHours.length > 0);
       agendas.forEach( value => console.log(value))
       this.agendas = agendas

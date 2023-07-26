@@ -29,8 +29,8 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Reservar</th>
       <td mat-cell *matCellDef="let hour">
-        <button mat-icon-button (click)="performAction(hour)">
-          <mat-icon>build</mat-icon> <!-- Replace 'add' with your desired icon name -->
+        <button mat-icon-button (click)="performBookingAction(hour)">
+          <mat-icon>build</mat-icon>
         </button>
       </td>
     </ng-container>

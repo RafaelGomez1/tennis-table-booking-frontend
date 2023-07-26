@@ -1,11 +1,9 @@
 
 <div class="logo-wrapper">
-<!--  <h2 class="page-heading">{{ title }}</h2>-->
   <app-logo></app-logo>
 
   <button mat-icon-button color="primary" (click)="openAuthDialog()" class="auth-button">
     <mat-icon>account_circle</mat-icon>
   </button>
-<!--  <app-table-list [agendas]="agendas"></app-table-list>-->
-  <app-table [agenda]="agendas[1]"></app-table>
+  <app-table-list [agendas]="agendas"></app-table-list>
 </div>

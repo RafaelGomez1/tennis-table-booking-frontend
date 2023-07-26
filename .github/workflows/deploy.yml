@@ -51,6 +51,6 @@ jobs:
           password: ${{ secrets.DIGITALOCEAN_DROPLET_PASSWORD }}
           script: |
             docker pull rafagomezp/tt-sant-andreu-reservation:${{ github.sha }}
-            docker stop my-angular-app || true
-            docker rm my-angular-app || true
+            docker stop rafagomezp/tt-sant-andreu-reservation || true
+            docker rm rafagomezp/tt-sant-andreu-reservation || true
             docker run -d --name tt-sant-andreu-reservation -p 80:80 rafagomezp/tt-sant-andreu-reservation:${{ github.sha }}
