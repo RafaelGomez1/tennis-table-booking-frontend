@@ -51,6 +51,7 @@ jobs:
           password: ${{ secrets.DIGITALOCEAN_DROPLET_PASSWORD }}
           script: |
             container_id=$(docker ps -aqf "ancestor=rafagomezp/tt-sant-andreu-andreu-reservation")
+            echo "Container ID: $container_id"
             docker stop $container_id
             docker rm $container_id
             docker pull rafagomezp/tt-sant-andreu-reservation:${{ github.sha }}
