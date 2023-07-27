@@ -19,7 +19,7 @@
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef>Estado</th>
       <td mat-cell *matCellDef="let hour">
-          <span mat-chip *ngIf="isAvailable(hour); else lleno">Disponible</span>
+          <span mat-chip color="primary" *ngIf="isAvailable(hour); else lleno">Disponible</span>
           <ng-template #lleno>
             <span mat-chip>Completo</span>
           </ng-template>
@@ -29,9 +29,16 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Reservar</th>
       <td mat-cell *matCellDef="let hour">
-        <button mat-icon-button (click)="performBookingAction(hour)">
-          <mat-icon>build</mat-icon>
-        </button>
+        <div>
+          <button *ngIf="isAvailable(hour)" mat-icon-button color="primary" (click)="performBookingAction(hour)">
+            <mat-icon>add_circle</mat-icon>
+          </button>
+        </div>
+        <div>
+          <button *ngIf="shouldShowDelete(hour)" mat-icon-button color="accent" (click)="performCancelBookingAction(hour)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
       </td>
     </ng-container>
 

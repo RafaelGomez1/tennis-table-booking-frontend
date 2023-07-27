@@ -23,6 +23,7 @@ import {MatChipsModule} from "@angular/material/chips";
 import {MatSelectModule} from "@angular/material/select";
 import {MatIconModule} from "@angular/material/icon";
 import {MatBadgeModule} from "@angular/material/badge";
+import { BookingActionDialogComponent } from './components/booking-action-dialog/booking-action-dialog.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {MatBadgeModule} from "@angular/material/badge";
     TableListComponent,
     LogoComponent,
     AuthDialogComponent,
-    ActionDialogComponent
+    ActionDialogComponent,
+    BookingActionDialogComponent
   ],
   imports: [
     BrowserModule,

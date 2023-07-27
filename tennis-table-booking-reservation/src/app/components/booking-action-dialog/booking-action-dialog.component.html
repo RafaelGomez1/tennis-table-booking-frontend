@@ -1,17 +1,17 @@
 <h2>{{ agendaDateFormatted }}</h2>
 <mat-form-field>
-  <mat-label>Cancelar</mat-label>
+  <mat-label>Reservar</mat-label>
   <mat-select [(ngModel)]="reservationType">
     <mat-option [value]="option" *ngFor="let option of reservationTypeOptions()">{{ option }}</mat-option>
   </mat-select>
 </mat-form-field>
 
-<mat-form-field>
-  <mat-label>Nombre</mat-label>
-  <mat-select [(value)]="name">
-    <mat-option [value]="option.name" *ngFor="let option of selectedHour.registeredPlayers">{{ option.name }}</mat-option>
-  </mat-select>
-</mat-form-field>
+<ng-container>
+  <mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput [(ngModel)]="name"/>
+  </mat-form-field>
+</ng-container>
 
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close (click)="onCancel()">Cancelar</button>
