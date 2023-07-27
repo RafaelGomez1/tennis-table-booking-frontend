@@ -56,4 +56,4 @@ jobs:
             docker stop $container_id
             docker rm $container_id
             docker pull rafagomezp/tt-sant-andreu-reservation:${{ github.sha }}
-            docker run -d --name tt-sant-andreu-reservation -p 80:80 rafagomezp/tt-sant-andreu-reservation:${{ github.sha }}
+            docker run -d --name tt-sant-andreu-reservation:${{ github.sha }} -p 80:80 rafagomezp/tt-sant-andreu-reservation:${{ github.sha }}

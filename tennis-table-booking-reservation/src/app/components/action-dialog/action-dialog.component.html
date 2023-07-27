@@ -1,17 +1,27 @@
 <h2>{{ agendaDateFormatted }}</h2>
-<mat-form-field appearance="fill">
-  <mat-label>Reservar / Cancelar Reserva</mat-label>
+<mat-form-field>
+  <mat-label>Reservar / Cancelar</mat-label>
   <mat-select [(ngModel)]="reservationType">
-    <mat-option value="RESERVAR">RESERVAR</mat-option>
-    <mat-option value="CANCELAR_RESERVA">CANCELAR RESERVA</mat-option>
+    <mat-option [value]="option" *ngFor="let option of reservationTypeOptions()">{{ option }}</mat-option>
   </mat-select>
 </mat-form-field>
-<mat-form-field appearance="fill">
+
+<ng-container *ngIf="selectedHour.registeredPlayers.length < parseInt(selectedHour.capacity.value, 10) && reservationType === 'Reservar'">
+  <mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput [(ngModel)]="name"/>
+  </mat-form-field>
+</ng-container>
+
+<mat-form-field *ngIf="selectedHour.registeredPlayers.length === parseInt(selectedHour.capacity.value, 10) || reservationType ==='Cancelar Reserva'">
   <mat-label>Nombre</mat-label>
-  <input matInput [(ngModel)]="name" />
+  <mat-select [(value)]="name">
+    <mat-option [value]="option.name" *ngFor="let option of selectedHour.registeredPlayers">{{ option.name }}</mat-option>
+  </mat-select>
 </mat-form-field>
+
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close (click)="onCancel()">Cancelar</button>
-  <button mat-raised-button color="primary" (click)="onSubmit()">Reservar</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()">Confirmar</button>
 </mat-dialog-actions>
 
