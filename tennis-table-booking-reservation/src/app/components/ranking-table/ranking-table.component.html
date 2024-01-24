@@ -1,0 +1,81 @@
+<!-- Your component's HTML -->
+<div class="toolbar-container">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Liga</mat-label>
+    <mat-select [(ngModel)]="selectedLeague">
+      <mat-option [value]="liga" *ngFor="let liga of ligas">{{ liga }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Club</mat-label>
+    <mat-select [(ngModel)]="selectedClub">
+      <!-- Add mat-options as needed -->
+      <mat-option value="optionA">Option A</mat-option>
+      <mat-option value="optionB">Option B</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button (click)="onSearchClick()" mat-icon-button color="primary">
+    <mat-icon>search</mat-icon>
+  </button>
+
+</div>
+
+<mat-card class="table-card">
+  <div>Ranking de {{selectedLeague}} para el club {{selectedClub}}</div>
+  <mat-table class="ranking-table" [dataSource]="ranking.players">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>Licencia</mat-header-cell>
+      <mat-cell *matCellDef="let player">{{ player.id }}</mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+      <mat-cell *matCellDef="let player">{{ player.name }}</mat-cell>
+    </ng-container>
+
+    <!-- Club Column -->
+<!--    <ng-container matColumnDef="club">-->
+<!--      <mat-header-cell *matHeaderCellDef>Club</mat-header-cell>-->
+<!--      <mat-cell *matCellDef="let player">{{ player.club }}</mat-cell>-->
+<!--    </ng-container>-->
+
+    <!-- Games Played Column -->
+    <ng-container matColumnDef="gamesPlayed">
+      <mat-header-cell *matHeaderCellDef>PJ</mat-header-cell>
+      <mat-cell *matCellDef="let player">{{ player.stats.gamesPlayed }}</mat-cell>
+    </ng-container>
+
+    <!-- Games Won Column -->
+<!--    <ng-container matColumnDef="gamesWon">-->
+<!--      <mat-header-cell *matHeaderCellDef>PG</mat-header-cell>-->
+<!--      <mat-cell *matCellDef="let player">{{ player.stats.gamesWon }}</mat-cell>-->
+<!--    </ng-container>-->
+
+<!--    &lt;!&ndash; Games Lost Column &ndash;&gt;-->
+<!--    <ng-container matColumnDef="gamesLost">-->
+<!--      <mat-header-cell *matHeaderCellDef>PP</mat-header-cell>-->
+<!--      <mat-cell *matCellDef="let player">{{ player.stats.gamesLost }}</mat-cell>-->
+<!--    </ng-container>-->
+
+    <!-- Win Rate Column -->
+    <ng-container matColumnDef="winRate">
+      <mat-header-cell *matHeaderCellDef>WR</mat-header-cell>
+      <mat-cell *matCellDef="let player">{{ player.stats.winRate }}%</mat-cell>
+    </ng-container>
+
+    <!-- Ranking Points Column -->
+    <ng-container matColumnDef="rankingPoints">
+      <mat-header-cell *matHeaderCellDef>Puntos</mat-header-cell>
+      <mat-cell *matCellDef="let player">{{ player.rankingPoints }}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="getColumnsToDisplay()"></mat-header-row>
+    <mat-row *matRowDef="let player; columns: getColumnsToDisplay()"></mat-row>
+  </mat-table>
+</mat-card>
