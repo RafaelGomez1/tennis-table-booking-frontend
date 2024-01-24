@@ -4,5 +4,15 @@
   <button mat-icon-button color="primary" (click)="openAuthDialog()" class="auth-button">
     <mat-icon>account_circle</mat-icon>
   </button>
-  <app-table-list [agendas]="agendas"></app-table-list>
+  <button *ngIf="showTableList" mat-icon-button color="primary" routerLink="/ranking" (click)="toggleTableList()" class="competition-button">
+    <mat-icon>leaderboard</mat-icon>
+  </button>
+  <button *ngIf="showEventButton" mat-icon-button color="primary" (click)="toggleTableList()" class="competition-button">
+    <mat-icon>event</mat-icon>
+  </button>
+
+  <app-table-list *ngIf="showTableList" [agendas]="agendas"></app-table-list>
+  <app-ranking-table *ngIf="!showTableList" [rankingData]="leagueRanking"></app-ranking-table>
 </div>
+
+
