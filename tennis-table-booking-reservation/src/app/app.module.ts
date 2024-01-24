@@ -24,6 +24,8 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatIconModule} from "@angular/material/icon";
 import {MatBadgeModule} from "@angular/material/badge";
 import { BookingActionDialogComponent } from './components/booking-action-dialog/booking-action-dialog.component';
+import { RankingTableComponent } from "./components/ranking-table/ranking-table.component";
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { BookingActionDialogComponent } from './components/booking-action-dialog
     LogoComponent,
     AuthDialogComponent,
     ActionDialogComponent,
-    BookingActionDialogComponent
+    BookingActionDialogComponent,
+    RankingTableComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import { BookingActionDialogComponent } from './components/booking-action-dialog
     MatChipsModule,
     MatSelectModule,
     MatIconModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

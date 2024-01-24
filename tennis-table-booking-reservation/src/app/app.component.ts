@@ -1,9 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { AuthDialogComponent } from "./components/auth-dialog/auth-dialog.component";
-import { Agenda } from "./models/agenda/Agenda";
-import { AgendaService } from "./services/agenda.service";
-import { Subscription } from "rxjs";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import {AuthDialogComponent} from "./components/auth-dialog/auth-dialog.component";
+import {Agenda} from "./models/agenda/Agenda";
+import {AgendaService} from "./services/agenda.service";
+import {Subscription} from "rxjs";
+import {RankingService} from "./services/ranking.service";
+import {League, RankingData} from "./models/ranking/LeagueRanking";
 
 @Component({
   selector: 'app-root',
@@ -11,18 +13,39 @@ import { Subscription } from "rxjs";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  constructor(private dialog: MatDialog, private agendaService: AgendaService) {}
+  constructor(
+    private dialog: MatDialog,
+    private agendaService: AgendaService,
+    private rankingService: RankingService
+  ) {}
 
   title = 'TT Sant Andreu Reservas';
   agendas: Agenda[] = []
+  showTableList = true;
+  showEventButton = false;
 
   // @ts-ignore
   private subscription: Subscription;
+  // @ts-ignore
+  private subscription2: Subscription;
+  // @ts-ignore
+  leagueRanking: RankingData;
 
   openAuthDialog(): void {
     this.dialog.open(AuthDialogComponent, {
       width: '350px',
     });
+  }
+
+  openRankingTable(): void {
+    // this.dialog.open(RankingTableComponent, {
+    //   width: '350px',
+    // });
+  }
+
+  toggleTableList() {
+    this.showTableList = !this.showTableList;
+    this.showEventButton = !this.showEventButton;
   }
 
   ngOnInit() {
@@ -33,6 +56,11 @@ export class AppComponent implements OnInit, OnDestroy {
       let agendas = res.filter((agenda) => agenda.availableHours && agenda.availableHours.length > 0);
       agendas.forEach( value => console.log(value))
       this.agendas = agendas
+    })
+
+    this.subscription2 = this.rankingService.getRanking(League.TERCERA_A, "TT SANT ANDREU -A-").subscribe(res => {
+      console.log(res)
+      this.leagueRanking = res
     })
   }
 
