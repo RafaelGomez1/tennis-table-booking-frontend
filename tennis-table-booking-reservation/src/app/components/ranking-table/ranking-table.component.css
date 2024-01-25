@@ -9,15 +9,30 @@
 }
 
 /* Apply the same styling for table cells and headers as your other table */
-.mat-cell, .mat-header-cell {
-  padding: 0px;
+
+
+.mdc-data-table__row .mat-column-name {
+  min-width: 100px;
+  font-size: 12px;
+  justify-content: start;
+}
+
+.mat-column-name {
+  min-width: 100px;
+}
+
+mat-cell, mat-header-cell {
   flex-direction: row;
-  text-align: center;
+  justify-content: center;
 }
 
 .mat-card {
   max-width: calc(80% - 10px);
 }
+
+/*.mdc-data-table__header-cell {*/
+/*  justify-content: center !important;*/
+/*}*/
 
 /* Apply the styling for the entire table container */
 .ranking-table {

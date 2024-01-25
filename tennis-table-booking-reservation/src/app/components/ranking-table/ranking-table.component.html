@@ -39,29 +39,11 @@
       <mat-cell *matCellDef="let player">{{ player.name }}</mat-cell>
     </ng-container>
 
-    <!-- Club Column -->
-<!--    <ng-container matColumnDef="club">-->
-<!--      <mat-header-cell *matHeaderCellDef>Club</mat-header-cell>-->
-<!--      <mat-cell *matCellDef="let player">{{ player.club }}</mat-cell>-->
-<!--    </ng-container>-->
-
     <!-- Games Played Column -->
     <ng-container matColumnDef="gamesPlayed">
       <mat-header-cell *matHeaderCellDef>PJ</mat-header-cell>
       <mat-cell *matCellDef="let player">{{ player.stats.gamesPlayed }}</mat-cell>
     </ng-container>
-
-    <!-- Games Won Column -->
-<!--    <ng-container matColumnDef="gamesWon">-->
-<!--      <mat-header-cell *matHeaderCellDef>PG</mat-header-cell>-->
-<!--      <mat-cell *matCellDef="let player">{{ player.stats.gamesWon }}</mat-cell>-->
-<!--    </ng-container>-->
-
-<!--    &lt;!&ndash; Games Lost Column &ndash;&gt;-->
-<!--    <ng-container matColumnDef="gamesLost">-->
-<!--      <mat-header-cell *matHeaderCellDef>PP</mat-header-cell>-->
-<!--      <mat-cell *matCellDef="let player">{{ player.stats.gamesLost }}</mat-cell>-->
-<!--    </ng-container>-->
 
     <!-- Win Rate Column -->
     <ng-container matColumnDef="winRate">
