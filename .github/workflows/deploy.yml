@@ -13,6 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Set up Docker
         run: |
           sudo apt-get remove docker docker-engine docker.io containerd runc
           sudo apt-get clean
