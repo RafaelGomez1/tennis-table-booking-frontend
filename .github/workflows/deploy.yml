@@ -24,7 +24,6 @@ jobs:
           sudo systemctl start docker
           sudo systemctl enable docker
 
-      - name: Set up Docker
       - name: Log in to Docker Hub
         run: |
           echo "Logging in to Docker Hub with username: ${{ secrets.DOCKERHUB_USER }}"
