@@ -13,16 +13,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Docker
         run: |
-          sudo apt-get update
+          sudo apt-get remove docker docker-engine docker.io containerd runc
+          
           sudo apt-get clean
           sudo apt-get autoclean
-          sudo apt-get -y install containerd.io
-          sudo apt-get -y install docker.io
+          sudo apt-get update
+          sudo apt-get -y install containerd
+          sudo apt install -y docker.io docker-compose
           sudo systemctl start docker
           sudo systemctl enable docker
 
+      - name: Set up Docker
       - name: Log in to Docker Hub
         run: |
           echo "Logging in to Docker Hub with username: ${{ secrets.DOCKERHUB_USER }}"
