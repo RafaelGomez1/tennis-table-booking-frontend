@@ -16,7 +16,6 @@ jobs:
       - name: Set up Docker
         run: |
           sudo apt-get update
-          sudo apt-get -y remove moby-containerd containerd moby-runc runc
           sudo apt-get -y install docker.io
           sudo systemctl start docker
           sudo systemctl enable docker
