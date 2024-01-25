@@ -3,7 +3,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Liga</mat-label>
-    <mat-select [(ngModel)]="selectedLeague">
+    <mat-select [(ngModel)]="selectedLeague" (selectionChange)="onLeagueSelectionChange()">
       <mat-option [value]="liga" *ngFor="let liga of ligas">{{ liga }}</mat-option>
     </mat-select>
   </mat-form-field>
@@ -11,9 +11,7 @@
   <mat-form-field appearance="fill">
     <mat-label>Club</mat-label>
     <mat-select [(ngModel)]="selectedClub">
-      <!-- Add mat-options as needed -->
-      <mat-option value="optionA">Option A</mat-option>
-      <mat-option value="optionB">Option B</mat-option>
+      <mat-option [value]="club" *ngFor="let club of clubs.clubs">{{ club }}</mat-option>
     </mat-select>
   </mat-form-field>
 

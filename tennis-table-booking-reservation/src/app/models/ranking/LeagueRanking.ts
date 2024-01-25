@@ -33,3 +33,7 @@ export enum League {
   TERCERA_A ="TERCERA_A",
   TERCERA_B ="TERCERA_B",
 }
+
+export class Clubs {
+  constructor(public clubs: string[]) {}
+}
