@@ -5,7 +5,7 @@ import {Agenda} from "./models/agenda/Agenda";
 import {AgendaService} from "./services/agenda.service";
 import {Subscription} from "rxjs";
 import {RankingService} from "./services/ranking.service";
-import {League, RankingData} from "./models/ranking/LeagueRanking";
+import {League, LeagueStandingsDTO, RankingData} from "./models/ranking/LeagueRanking";
 
 @Component({
   selector: 'app-root',
@@ -30,6 +30,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private subscription2: Subscription;
   // @ts-ignore
   leagueRanking: RankingData;
+  standingsData: LeagueStandingsDTO[] = [];
 
   openAuthDialog(): void {
     this.dialog.open(AuthDialogComponent, {
@@ -61,6 +62,12 @@ export class AppComponent implements OnInit, OnDestroy {
     this.subscription2 = this.rankingService.getRanking(League.TERCERA_A, "TT SANT ANDREU -A-").subscribe(res => {
       console.log(res)
       this.leagueRanking = res
+
+      if (res.standings.has("G1")) {
+        const tmp = res.standings.get("G1")!
+        console.log("TMP value is " + tmp)
+        this.standingsData = tmp
+      }
     })
   }
 
@@ -79,5 +86,13 @@ export class AppComponent implements OnInit, OnDestroy {
     const year = now.getFullYear();
 
     return { week: weekNumber, year: year };
+  }
+
+  getStandings() {
+    const standings = this.leagueRanking.standings.get("G1")
+
+    if (standings) {
+      return standings
+    } else return []
   }
 }

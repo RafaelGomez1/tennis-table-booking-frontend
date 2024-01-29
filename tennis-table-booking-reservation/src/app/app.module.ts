@@ -26,6 +26,8 @@ import {MatBadgeModule} from "@angular/material/badge";
 import { BookingActionDialogComponent } from './components/booking-action-dialog/booking-action-dialog.component';
 import { RankingTableComponent } from "./components/ranking-table/ranking-table.component";
 import {MatToolbarModule} from "@angular/material/toolbar";
+import { StandingsTableComponent } from './components/standings-table/standings-table.component';
+import { StandingsTableListComponent } from './components/standings-table-list/standings-table-list.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     AuthDialogComponent,
     ActionDialogComponent,
     BookingActionDialogComponent,
-    RankingTableComponent
+    RankingTableComponent,
+    StandingsTableComponent,
+    StandingsTableListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {Clubs, League, RankingData} from "../../models/ranking/LeagueRanking";
+import {Clubs, League, LeagueStandingsDTO, RankingData} from "../../models/ranking/LeagueRanking";
 import {RankingService} from "../../services/ranking.service";
 import {ClubsService} from "../../services/clubs.service";
 
@@ -35,9 +35,6 @@ export class RankingTableComponent implements OnInit, OnDestroy {
   };
 
   onSearchClick() {
-
-
-
     this.subscription2 = this.rankingService.getRanking(this.selectedLeague, this.selectedClub).subscribe(res => {
       console.log(res)
       this.ranking.players = res.players

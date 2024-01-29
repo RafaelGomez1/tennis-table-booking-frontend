@@ -18,4 +18,16 @@ export class RankingService {
 
     return this.http.get<RankingData>(`${this.serverUrl}/rankings`, { params : params });
   }
+
+  // getRankingNullable(league: League, club: string | null): Observable<RankingData> {
+  //   let params = new HttpParams()
+  //
+  //   params = params.append('league', league);
+  //
+  //   if (club !== null) {
+  //     params = params.append('club', club);
+  //   }
+  //
+  //   return this.http.get<RankingData>(`${this.serverUrl}/leagues`, { params : params });
+  // }
 }
