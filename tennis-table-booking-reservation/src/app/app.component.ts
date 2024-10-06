@@ -38,12 +38,6 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
 
-  openRankingTable(): void {
-    // this.dialog.open(RankingTableComponent, {
-    //   width: '350px',
-    // });
-  }
-
   toggleTableList() {
     this.showTableList = !this.showTableList;
     this.showEventButton = !this.showEventButton;
@@ -73,6 +67,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe()
+    this.subscription2.unsubscribe()
   }
 
   private getCurrentWeekAndYear(): { week: number; year: number } {
@@ -86,13 +81,5 @@ export class AppComponent implements OnInit, OnDestroy {
     const year = now.getFullYear();
 
     return { week: weekNumber, year: year };
-  }
-
-  getStandings() {
-    const standings = this.leagueRanking.standings.get("G1")
-
-    if (standings) {
-      return standings
-    } else return []
   }
 }

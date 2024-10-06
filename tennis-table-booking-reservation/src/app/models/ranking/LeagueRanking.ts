@@ -57,6 +57,7 @@ export enum League {
   SEGUNDA_B ="SEGUNDA_B",
   TERCERA_A ="TERCERA_A",
   TERCERA_B ="TERCERA_B",
+  CUARTA = "CUARTA",
 }
 
 export class Clubs {
