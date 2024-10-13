@@ -33,6 +33,13 @@ jobs:
         run: |
           ls -la
 
+      - name: Clean npm cache and node_modules
+        run: |
+          npm cache clean --force
+          rm -rf node_modules
+          npm ci
+
+
       - name: Build and push Docker image
         run: |
           cd tennis-table-booking-reservation
