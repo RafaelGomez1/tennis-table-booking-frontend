@@ -35,6 +35,7 @@ jobs:
 
       - name: Clean npm cache and node_modules
         run: |
+          cd tennis-table-booking-reservation
           npm cache clean --force
           rm -rf node_modules
           npm ci
