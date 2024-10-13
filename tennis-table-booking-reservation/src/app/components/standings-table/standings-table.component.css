@@ -1,0 +1,81 @@
+/* standing-table.component.css */
+
+/* Add this to horizontally align the elements */
+.toolbar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px; /* Add space between the toolbar and the card */
+}
+
+/* Apply the same styling for table cells and headers as your other table */
+
+
+.mdc-data-table__row .mat-column-name {
+  min-width: 100px;
+  font-size: 12px;
+  justify-content: start;
+}
+
+.mat-column-name {
+  min-width: 100px;
+}
+
+mat-cell, mat-header-cell {
+  flex-direction: row;
+  justify-content: center;
+}
+
+.mat-card {
+  max-width: calc(80% - 10px);
+}
+
+/*.mdc-data-table__header-cell {*/
+/*  justify-content: center !important;*/
+/*}*/
+
+/* Apply the styling for the entire table container */
+.standing-table {
+  width: calc(80% - 10px);
+  border-collapse: collapse;
+  margin-top: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Apply styling for the header row */
+.mat-header-row {
+  background-color: #f2f2f2;
+}
+
+/* Optional: Add some space between rows */
+.mat-row {
+  margin-bottom: 5px;
+}
+
+/* Apply the styling for the entire table card */
+.table-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  max-width: calc(80% - 10px); /* Set max width for larger screens */
+  margin: 0 auto; /* Center the card horizontally */
+}
+
+/* Optional: Add some space between the header and the table */
+.mat-header-row {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 767px) {
+  .toolbar-container {
+    margin-bottom: 10px; /* Reduce space for smaller screens */
+  }
+
+  .standing-table,
+  .table-card {
+    width: 100%; /* Full width for smaller screens */
+    max-width: none; /* Remove max width for smaller screens */
+  }
+}

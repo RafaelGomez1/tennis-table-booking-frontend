@@ -1,0 +1,51 @@
+<mat-card class="table-card">
+  <mat-table class="standing-table" [dataSource]="standings">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>Rank</mat-header-cell>
+      <mat-cell *matCellDef="let team">{{ team.standing }}</mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Club</mat-header-cell>
+      <mat-cell *matCellDef="let team">{{ team.club }}</mat-cell>
+    </ng-container>
+
+    <!-- Games Played Column -->
+    <ng-container matColumnDef="gamesPlayed">
+      <mat-header-cell *matHeaderCellDef>EJ</mat-header-cell>
+      <mat-cell *matCellDef="let team">{{ team.gamesPlayed }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="gamesWon">
+      <mat-header-cell *matHeaderCellDef>EG</mat-header-cell>
+      <mat-cell *matCellDef="let team">{{ team.gamesWon }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="gamesLost">
+      <mat-header-cell *matHeaderCellDef>EP</mat-header-cell>
+      <mat-cell *matCellDef="let team">{{ team.gamesLost }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="pointsWon">
+      <mat-header-cell *matHeaderCellDef>PG</mat-header-cell>
+      <mat-cell *matCellDef="let team">{{ team.setsWon }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="pointsLost">
+      <mat-header-cell *matHeaderCellDef>PP</mat-header-cell>
+      <mat-cell *matCellDef="let team">{{ team.setsLost }}</mat-cell>
+    </ng-container>
+
+    <!-- Ranking Points Column -->
+    <ng-container matColumnDef="rankingPoints">
+      <mat-header-cell *matHeaderCellDef>Pts</mat-header-cell>
+      <mat-cell *matCellDef="let team">{{ team.points }}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="getColumnsToDisplay()"></mat-header-row>
+    <mat-row *matRowDef="let team; columns: getColumnsToDisplay()"></mat-row>
+  </mat-table>
+</mat-card>
